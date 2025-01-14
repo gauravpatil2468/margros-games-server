@@ -41,7 +41,7 @@ export const registerUser = async (req, res) => {
         // Insert user data into Supabase
         const { error } = await supabase
             .from('users')
-            .insert([{ name, email, phone: cleanedPhone, token, game_played: false, played_on: [] }]);
+            .insert([{ name, email, phone: cleanedPhone, token, game_played: false, played_on: null }]);
 
         if (error) {
             console.error(error.message);
