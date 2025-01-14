@@ -7,11 +7,7 @@ const app = express();
 const PORT = 3001;
 
 // Middleware for CORS
-app.use(cors({
-  origin: "http://localhost:3000", // Allow requests only from localhost:3000
-  methods: "GET,POST,PUT,DELETE", // Allow specific HTTP methods
-  allowedHeaders: "Content-Type, Authorization", // Allow specific headers
-}));
+app.use(cors());
 
 // Middleware
 app.use(bodyParser.json());

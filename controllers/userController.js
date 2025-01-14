@@ -21,13 +21,11 @@ export const registerUser = async (req, res) => {
 
         // Send game link via SMS using Fast2SMS
         const message =
-            `🎉 Play & Win! 🎉
+            `
 Hi ${name},
-Tap on the link and play exciting games to win amazing offers and menu! 🎁
+Tap on the link and play exciting games to win amazing offers and menu! 
 
-👉 ${gameLink}
-
-Hurry, don’t miss out! 🕒
+${gameLink}
 
          `;
         const sendStatus = await sendSMS(phone, message);
