@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerUser,  markGamePlayed } from '../controllers/userController.js';
+import { registerUser,  markGamePlayed, setRating } from '../controllers/userController.js';
 
 const router = express.Router();
 
@@ -11,5 +11,6 @@ router.post('/register', registerUser);
 
 // POST /api/game-played - Mark game as played
 router.post('/game-played', markGamePlayed);
+router.post('/feedback',setRating)
 
 export default router;

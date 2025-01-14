@@ -74,26 +74,67 @@ export const registerUser = async (req, res) => {
 //         res.status(500).json({ error: 'Error validating token.' });
 //     }
 // };
-
-/**
- * Mark the game as played and update the played_on timestamp.
- */
 export const markGamePlayed = async (req, res) => {
     const { token } = req.body;
 
     try {
-        // Update the game_played status and add current timestamp to played_on array
-        const playedOnTimestamp = new Date().toISOString(); // Generate current timestamp
+        // Generate the current timestamp
+        const playedOnTimestamp = new Date().toISOString();
+
+        // Update the played_on timestamp column
         const { data, error } = await supabase
             .from('users')
-            .update({ game_played: true, played_on: supabase.raw('array_append(played_on, ?)', [playedOnTimestamp]) })
+            .update({
+                game_played: true,
+                played_on: playedOnTimestamp // Set the new timestamp value
+            })
             .eq('token', token);
 
-        if (error) return res.status(400).json({ error: error.message });
+        if (error) {
+            console.error('Error updating game_played status:', error);
+            return res.status(400).json({ error: 'Error marking game as played.' });
+        }
 
         res.status(200).json({ message: 'Game marked as played!', token });
     } catch (err) {
-        console.error(err);
+        console.error('Unexpected error:', err);
         res.status(500).json({ error: 'Error marking game as played.' });
+    }
+};
+
+
+
+
+
+
+
+/**
+ * Set the rating for the user.
+ */
+export const setRating = async (req, res) => {
+    const { token, rating } = req.body; // Extract token and rating from request body
+
+    try {
+        // Validate the rating (ensure it's an integer and within range)
+        if (Number.isInteger(rating) && rating >= 1 && rating <= 5) {
+            // Update the rating in the Supabase database
+            const { data, error } = await supabase
+                .from('users')
+                .update({ rating })
+                .eq('token', token);
+
+            if (error) {
+                console.error(error.message);
+                return res.status(400).json({ error: 'Error updating rating.' });
+            }
+
+            res.status(200).json({ message: 'Rating updated successfully!', rating });
+        } else {
+            // If rating is not a valid integer or not within the acceptable range
+            return res.status(400).json({ error: 'Invalid rating. Please provide an integer between 1 and 5.' });
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error setting rating.' });
     }
 };
