@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerUser, validateToken, markGamePlayed } from '../controllers/userController.js';
+import { registerUser,  markGamePlayed } from '../controllers/userController.js';
 
 const router = express.Router();
 
@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/register', registerUser);
 
 // GET /api/validate-token - Validate token
-router.get('/validate-token', validateToken);
+// router.get('/validate-token', validateToken);
 
 // POST /api/game-played - Mark game as played
 router.post('/game-played', markGamePlayed);
