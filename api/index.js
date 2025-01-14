@@ -1,3 +1,3 @@
-import app from "../";  // Import the app from the root index.js
+import app from "../index";  // Import the Express app from the root folder
 
-export default (req, res) => app(req, res);  // Wrap the app as a serverless function
+export default app;  // Export the app for Vercel to use as a serverless function
