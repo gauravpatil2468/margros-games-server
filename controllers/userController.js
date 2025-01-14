@@ -6,11 +6,14 @@ export const registerUser = async (req, res) => {
     const { name, email, phone } = req.body;
 
     try {
+        // Remove +91 or 0 from the start of the phone number
+        const cleanedPhone = phone.replace(/^(\+91|0)/, '');
+
         // Check if the user already exists in the database
         const { data: existingUser, error: fetchError } = await supabase
             .from('users')
             .select('*')
-            .eq('phone', phone)
+            .eq('phone', cleanedPhone)
             .single();
 
         if (fetchError && fetchError.code !== 'PGRST116') {
@@ -38,7 +41,7 @@ export const registerUser = async (req, res) => {
         // Insert user data into Supabase
         const { error } = await supabase
             .from('users')
-            .insert([{ name, email, phone, token, game_played: false, played_on: [] }]);
+            .insert([{ name, email, phone: cleanedPhone, token, game_played: false, played_on: [] }]);
 
         if (error) {
             console.error(error.message);
