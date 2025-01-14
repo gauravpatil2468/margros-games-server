@@ -8,12 +8,11 @@ const app = express();
 // Middleware for CORS
 app.use(cors());
 
-// Middleware
+// Middleware for body parsing
 app.use(bodyParser.json());
 
 // Routes
 app.use('/api', userRoutes);
 
-// Export app as a module for serverless use
+// Export app as a serverless function for Vercel
 export default app;
-
