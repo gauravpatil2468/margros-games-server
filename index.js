@@ -4,7 +4,6 @@ import cors from "cors";
 import userRoutes from './routes/userRoutes.js';
 
 const app = express();
-const PORT = 3001;
 
 // Middleware for CORS
 app.use(cors());
@@ -15,4 +14,6 @@ app.use(bodyParser.json());
 // Routes
 app.use('/api', userRoutes);
 
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+// Export app as a module for serverless use
+export default app;
+
