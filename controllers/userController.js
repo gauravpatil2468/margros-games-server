@@ -25,9 +25,7 @@ export const registerUser = async (req, res) => {
         if (existingUser) {
             // If the user exists, return their token and latest timestamp
             const latestPlayedTimestamp =
-                existingUser.played_on?.length > 0
-                    ? existingUser.played_on[existingUser.played_on.length - 1]
-                    : null;
+                existingUser.played_on
             return res.status(200).json({
                 message: 'User already registered!',
                 token: existingUser.token,
