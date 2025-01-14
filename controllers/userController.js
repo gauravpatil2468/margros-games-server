@@ -17,7 +17,7 @@ export const registerUser = async (req, res) => {
              return res.status(400).json({ error: error.message });}
 
         // Generate game link
-        const gameLink = `http://localhost:3001/api/validate-token?token=${token}`;
+        const gameLink = `https://margros-games-server.onrender.com/api/validate-token?token=${token}`;
 
         // Send game link via SMS using Fast2SMS
         const message =
@@ -55,7 +55,7 @@ export const validateToken = async (req, res) => {
         if (data.game_played) return res.status(400).json({ error: 'This game link has already been used.' });
 
         // Redirect to the game page
-        res.redirect(`http://localhost:3000/home?token=${token}`);
+        res.redirect(`https://margros-games-client.vercel.app/home?token=${token}`);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Error validating token.' });
