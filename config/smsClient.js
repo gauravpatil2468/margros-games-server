@@ -9,7 +9,7 @@ const sendSMS = async (toPhoneNumbers, message) => {
     const data = {
         message: message, // The message you want to send
         language: 'english', // Language of the message (default to english)
-        route: 'dlt', // Quick SMS route, you can change this if needed
+        route: 'q', // Quick SMS route, you can change this if needed
         numbers: toPhoneNumbers, // Comma-separated phone numbers (e.g. '9999999999,8888888888')
     };
 
