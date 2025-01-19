@@ -1,0 +1,65 @@
+{
+  "teasetandoor": {
+    "offers": {
+      "spin_wheel": [
+        "Gulab Jamun",
+        "Mojito",
+        "Samosa Chutney",
+        "5% off on next visit"
+      ],
+      "card_game": [
+        "Tawa Fried Chicken Roll",
+        "Paneer Tikka Roll"
+      ],
+      "dice_game": [
+        "5% off",
+        "10% off",
+        "15% off"
+      ]
+    },
+    "tableName": "users_teasetandoor",
+    "winProbability": 40
+  },
+  "hotel_srisierra": {
+    "offers": {
+      "spin_wheel": [
+        "Gulab Jamun",
+        "5% off on next visit",
+        "Lime Soda Juice",
+        "Fruit Salad"
+      ],
+      "card_game": [
+        "Lemon Coriander Soup",
+        "Chicken Manchow Soup"
+      ],
+      "dice_game": [
+        "5% off",
+        "10% off",
+        "15% off"
+      ]
+    },
+    "tableName": "users_srisierra",
+    "winProbability": 40
+  },
+  "hotel_vrb": {
+    "offers": {
+      "spin_wheel": [
+        "Gulab Jamun",
+        "5% off on next visit",
+        "Lime Soda Juice",
+        "Gulab Jamun with Ice Cream"
+      ],
+      "card_game": [
+        "Lemon Coriander Soup",
+        "Chicken Manchow Soup"
+      ],
+      "dice_game": [
+        "5% off",
+        "10% off",
+        "15% off"
+      ]
+    },
+    "tableName": "users_vrb",
+    "winProbability": 40
+  }
+}
